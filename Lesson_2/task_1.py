@@ -44,6 +44,8 @@ for col, lst in enumerate((os_prod_list, os_name_list, os_code_list, os_type_lis
     for i in range(1, 4):
         lst.append(get_data(f'info_{i}.txt', columns[col]))
 
-main_data.append([os_prod_list[i], os_name_list[i], os_code_list[i], os_type_list[i]] for i in range(3))
+for i in range(3):
+    main_data.append([os_prod_list[i], os_name_list[i], os_code_list[i], os_type_list[i]])
+
 
 write_to_csv('out.csv', main_data)
