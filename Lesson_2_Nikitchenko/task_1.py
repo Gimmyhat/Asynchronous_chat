@@ -20,22 +20,9 @@ main_data — и поместить в него названия столбцо�
 
 import csv
 import re
-from chardet import detect
-
-
-def encoding_convert(file: str):
-    """Конвертация"""
-    with open(file, 'rb') as f_obj:
-        content_bytes = f_obj.read()
-    detected = detect(content_bytes)
-    encoding = detected['encoding']
-    content_text = content_bytes.decode(encoding)
-    with open(file, 'w', encoding='utf-8') as f_obj:
-        f_obj.write(content_text)
 
 
 def get_data(file: str, point: str):
-    encoding_convert(file)
     with open(file, encoding='utf-8') as f:
         for line in f:
             if el := re.search(fr'(?<={point}:)\s+[-\w\d\s]+$', line):
@@ -57,6 +44,9 @@ main_data = [columns]
 for col, lst in enumerate((os_prod_list, os_name_list, os_code_list, os_type_list)):
     for i in range(1, 4):
         lst.append(get_data(f'info_{i}.txt', columns[col]))
-    main_data.append(lst)
+
+for i in range(3):
+    main_data.append([os_prod_list[i], os_name_list[i], os_code_list[i], os_type_list[i]])
+
 
 write_to_csv('out.csv', main_data)
