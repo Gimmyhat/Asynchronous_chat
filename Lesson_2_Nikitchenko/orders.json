@@ -1,0 +1,18 @@
+{
+    "orders": [
+        {
+            "item": "good1",
+            "quantity": 5,
+            "price": 100,
+            "buyer": "Tom Johns",
+            "date": "2022-20-10"
+        },
+        {
+            "item": "good2",
+            "quantity": 1,
+            "price": 150,
+            "buyer": "Tom Johns",
+            "date": "2022-20-11"
+        }
+    ]
+}
