@@ -30,3 +30,17 @@ with open('file.yaml', 'w') as f_n:
 
 with open('file.yaml') as f_n:
     print(f_n.read())
+
+# OUTPUT
+
+# items:
+# - computer
+# - printer
+# - keyboard
+# - mouse
+# items_price:
+#   computer: 200€-1000€
+#   keyboard: 5€-50€
+#   mouse: 4€-7€
+#   printer: 100€-300€
+# items_quantity: 4
