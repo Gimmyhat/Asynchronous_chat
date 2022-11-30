@@ -37,16 +37,13 @@ def write_to_csv(file: str, lst: list):
 
 
 os_prod_list, os_name_list, os_code_list, os_type_list = [], [], [], []
-columns = ['Изготовитель системы',
-           'Название ОС', 'Код продукта', 'Тип системы']
+columns = ['Изготовитель системы', 'Название ОС', 'Код продукта', 'Тип системы']
 main_data = [columns]
 
 for col, lst in enumerate((os_prod_list, os_name_list, os_code_list, os_type_list)):
     for i in range(1, 4):
         lst.append(get_data(f'info_{i}.txt', columns[col]))
 
-for i in range(3):
-    main_data.append([os_prod_list[i], os_name_list[i], os_code_list[i], os_type_list[i]])
-
+main_data.append([os_prod_list[i], os_name_list[i], os_code_list[i], os_type_list[i]] for i in range(3))
 
 write_to_csv('out.csv', main_data)
