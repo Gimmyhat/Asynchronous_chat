@@ -1,6 +1,7 @@
 import socket
 from common.constants import *
 from common.utils import *
+import sys
 
 
 class Server:
@@ -38,9 +39,17 @@ class Server:
                 client.close()
             except ValueError:
                 print('Некорректное сообщение')
+            finally:
                 client.close()
 
 
 if __name__ == '__main__':
+    try:
+        if sys.argv[1] == '-a' and sys.argv[2]:
+            DEFAULT_IP_ADDRESS = sys.argv[2]
+        if sys.argv[3] == '-p' and sys.argv[4]:
+            DEFAULT_PORT = sys.argv[4]
+    except:
+        pass
     server = Server()
     server.main()

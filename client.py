@@ -2,6 +2,7 @@ import socket
 import time
 from common.constants import *
 from common.utils import *
+import sys
 
 
 class Client:
@@ -45,5 +46,12 @@ class Client:
 
 
 if __name__ == '__main__':
+    try:
+        if sys.argv[1]:
+            DEFAULT_IP_ADDRESS = sys.argv[1]
+        if sys.argv[2]:
+            DEFAULT_PORT = sys.argv[2]
+    except:
+        pass
     client = Client()
     client.main()
