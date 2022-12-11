@@ -1,20 +1,26 @@
 import socket
+import time
+import project_logs.config.server_logs_config
+import logging
 from common.constants import *
 from common.utils import *
 import sys
 
 
 class Server:
+    SERVER_LOGGER = logging.getLogger('server_logger')
 
     def __init__(self, server_address=DEFAULT_IP_ADDRESS, server_port=DEFAULT_PORT):
         self.server_address = server_address
         self.server_port = int(server_port)
 
-    @staticmethod
-    def client_message_handler(message):
+    def client_message_handler(self, message):
+        self.SERVER_LOGGER.debug(f'Received message: {message}')
+
         if ACTION in message and message[ACTION] == PRESENCE \
                 and TIME in message and USER in message and message[USER][ACCOUNT_NAME] == 'Guest':
             return {RESPONSE: 200}
+        self.SERVER_LOGGER.error('Server response: 400')
         return {
             RESPONSE: 400,
             ERROR: 'BAD REQUEST'
@@ -22,8 +28,10 @@ class Server:
 
     def main(self):
         if self.server_port < 1024 or self.server_port > 65535:
+            self.SERVER_LOGGER.critical('Invalid server port')
             raise ValueError
 
+        self.SERVER_LOGGER.info(f'Server object created address: {self.server_address}, port: {self.server_port}')
         transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         transport.bind((self.server_address, self.server_port))
 
@@ -38,7 +46,7 @@ class Server:
                 send_message(client, response)
                 client.close()
             except ValueError:
-                print('Некорректное сообщение')
+                self.SERVER_LOGGER.error('Invalid message')
             finally:
                 client.close()
 
