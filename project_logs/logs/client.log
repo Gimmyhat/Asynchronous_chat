@@ -1,0 +1,8 @@
+DEBUG | 2022-12-12 08:52:20,578 | client_logs_config.py | test debug message
+INFO | 2022-12-12 08:52:20,579 | client_logs_config.py | test info message
+ERROR | 2022-12-12 08:52:20,579 | client_logs_config.py | test error message
+CRITICAL | 2022-12-12 08:52:20,579 | client_logs_config.py | test critical message
+DEBUG | 2022-12-12 08:52:57,967 | client_logs_config.py | test debug message
+INFO | 2022-12-12 08:52:57,967 | client_logs_config.py | test info message
+ERROR | 2022-12-12 08:52:57,967 | client_logs_config.py | test error message
+CRITICAL | 2022-12-12 08:52:57,967 | client_logs_config.py | test critical message
