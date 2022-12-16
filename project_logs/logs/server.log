@@ -1,0 +1,20 @@
+INFO | 2022-12-12 07:46:48,762 | server.py | Server object created address: 127.0.0.1, port: 7777
+DEBUG | 2022-12-12 07:48:34,049 | server.py | Received message: {'action': 'presence', 'time': 1670802514.0492682, 'user': {'account_name': 'Guest'}}
+DEBUG | 2022-12-12 07:49:17,848 | server.py | Received message: {'action': 'msg', 'time': '2', 'user': {'account_name': 'Guest'}}
+ERROR | 2022-12-12 07:49:17,848 | server.py | Server response: 400
+DEBUG | 2022-12-12 07:49:17,849 | server.py | Received message: {'action': 'presence', 'time': '2', 'user': {'account_name': 'Guest'}}
+DEBUG | 2022-12-12 07:49:17,850 | server.py | Received message: {'action': 'presence', 'time': '2', 'user': {'account_name': 'Unknown'}}
+ERROR | 2022-12-12 07:49:17,850 | server.py | Server response: 400
+DEBUG | 2022-12-12 07:49:17,851 | server.py | Received message: {'time': '2', 'user': {'account_name': 'Guest'}}
+ERROR | 2022-12-12 07:49:17,851 | server.py | Server response: 400
+DEBUG | 2022-12-12 07:49:17,852 | server.py | Received message: {'action': 'presence', 'user': {'account_name': 'Guest'}}
+ERROR | 2022-12-12 07:49:17,852 | server.py | Server response: 400
+DEBUG | 2022-12-12 07:49:17,856 | server.py | Received message: {'action': 'presence', 'time': '2'}
+ERROR | 2022-12-12 07:49:17,856 | server.py | Server response: 400
+INFO | 2022-12-12 08:27:44,181 | server.py | Server object created address: 127.0.0.1, port: 7777
+DEBUG | 2022-12-12 08:28:14,140 | server.py | Received message: {'action': 'presence', 'time': 1670804894.140259, 'user': {'account_name': 'Guest'}}
+DEBUG | 2022-12-12 08:51:42,063 | server.py | Received message: {'action': 'presence', 'time': 1670806302.062641, 'user': {'account_name': 'Guest'}}
+DEBUG | 2022-12-12 08:53:15,216 | server_logs_config.py | test debug message
+INFO | 2022-12-12 08:53:15,216 | server_logs_config.py | test info message
+ERROR | 2022-12-12 08:53:15,217 | server_logs_config.py | test error message
+CRITICAL | 2022-12-12 08:53:15,217 | server_logs_config.py | test critical message
