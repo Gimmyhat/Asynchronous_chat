@@ -2,9 +2,11 @@ import logging
 import socket
 import sys
 import time
+import project_logs.config.client_logs_config
 
 from common.constants import *
 from common.utils import *
+from decors import Log
 
 
 class Client:
@@ -15,6 +17,7 @@ class Client:
         self.server_port = int(server_port)
         self.account_name = account_name
 
+    @Log()
     def create_presence(self):
         out_mes = {
             ACTION: PRESENCE,
@@ -26,6 +29,7 @@ class Client:
         self.CLIENT_LOGGER.debug('Presence created')
         return out_mes
 
+    @Log()
     def answer_handler(self, message):
         if RESPONSE in message:
             if message[RESPONSE] == 200:
@@ -34,6 +38,7 @@ class Client:
         self.CLIENT_LOGGER.critical('Invalid message')
         raise ValueError
 
+    @Log()
     def main(self):
         if self.server_port < 1024 or self.server_port > 65535:
             raise ValueError

@@ -1,8 +1,8 @@
-DEBUG | 2022-12-12 08:52:20,578 | client_logs_config.py | test debug message
-INFO | 2022-12-12 08:52:20,579 | client_logs_config.py | test info message
-ERROR | 2022-12-12 08:52:20,579 | client_logs_config.py | test error message
-CRITICAL | 2022-12-12 08:52:20,579 | client_logs_config.py | test critical message
-DEBUG | 2022-12-12 08:52:57,967 | client_logs_config.py | test debug message
-INFO | 2022-12-12 08:52:57,967 | client_logs_config.py | test info message
-ERROR | 2022-12-12 08:52:57,967 | client_logs_config.py | test error message
-CRITICAL | 2022-12-12 08:52:57,967 | client_logs_config.py | test critical message
+DEBUG | 2022-12-19 12:15:13,515 | client.py | Presence created
+DEBUG | 2022-12-19 12:15:13,516 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000001DAA33DD240>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2022-12-19 12:15:13,518 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000001DAA33DD240>, {'response': 200}), {}). From module __main__. From function client.main(). 
+DEBUG | 2022-12-19 12:15:13,518 | client.py | Called function main with params ((<__main__.Client object at 0x000001DAA33DD240>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2022-12-19 12:17:57,129 | client.py | Presence created
+DEBUG | 2022-12-19 12:17:57,130 | client.py | Called function create_presence with params (<__main__.Client object at 0x00000244BB0AD240>, {}). From module __main__. From function client.main(). 
+DEBUG | 2022-12-19 12:17:57,132 | client.py | Called function answer_handler with params (<__main__.Client object at 0x00000244BB0AD240>, {'response': 200}, {}). From module __main__. From function client.main(). 
+DEBUG | 2022-12-19 12:17:57,133 | client.py | Called function main with params (<__main__.Client object at 0x00000244BB0AD240>, {}). From module __main__. From function client.main(). 
