@@ -1,12 +1,11 @@
-import logging
+import logging.handlers
 import os
 
 PATH = os.path.split(os.path.dirname(os.path.abspath(__file__)))
 PATH = os.path.join(PATH[0], 'logs/client.log')
 
 CLIENT_FORMATTER = logging.Formatter('%(levelname)s | %(asctime)s | %(filename)s | %(message)s')
-
-FILE_HANDLER = logging.FileHandler(PATH)
+FILE_HANDLER = logging.handlers.TimedRotatingFileHandler(PATH, encoding='utf-8', interval=1, when='midnight')
 FILE_HANDLER.setFormatter(CLIENT_FORMATTER)
 
 LOG = logging.getLogger('client_logger')
