@@ -4,3 +4,12 @@ DEBUG | 2022-12-19 12:15:13,517 | server.py | Called function client_message_han
 INFO | 2022-12-19 12:17:40,615 | server.py | Server object created address: 127.0.0.1, port: 7777
 DEBUG | 2022-12-19 12:17:57,130 | server.py | Received message: {'action': 'presence', 'time': 1671423477.1298912, 'user': {'account_name': 'Guest'}}
 DEBUG | 2022-12-19 12:17:57,132 | server.py | Called function client_message_handler with params (<__main__.Server object at 0x00000223AAD2D2D0>, {'action': 'presence', 'time': 1671423477.1298912, 'user': {'account_name': 'Guest'}}, {}). From module __main__. From function server.main(). 
+INFO | 2022-12-21 10:35:03,660 | server.py | Server object created address: 127.0.0.1, port: 7777
+INFO | 2022-12-21 10:35:21,629 | server.py | Client ('127.0.0.1', 64374) connected
+DEBUG | 2022-12-21 10:35:21,837 | server.py | Received message: {'action': 'presence', 'time': 1671590121.6284947, 'user': {'account_name': 'Guest'}}
+INFO | 2022-12-21 10:35:21,838 | server.py | Server response OK
+DEBUG | 2022-12-21 10:35:21,844 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x000001E913A3BF40>, {'action': 'presence', 'time': 1671590121.6284947, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=520, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 64374)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-12-21 10:35:32,229 | server.py | Client ('127.0.0.1', 64375) connected
+DEBUG | 2022-12-21 10:35:32,430 | server.py | Received message: {'action': 'presence', 'time': 1671590132.2290823, 'user': {'account_name': 'Guest'}}
+INFO | 2022-12-21 10:35:32,430 | server.py | Server response OK
+DEBUG | 2022-12-21 10:35:32,431 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x000001E913A3BF40>, {'action': 'presence', 'time': 1671590132.2290823, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=468, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 64375)>), {}). From module __main__. From function server.main(). 

@@ -6,3 +6,21 @@ DEBUG | 2022-12-19 12:17:57,129 | client.py | Presence created
 DEBUG | 2022-12-19 12:17:57,130 | client.py | Called function create_presence with params (<__main__.Client object at 0x00000244BB0AD240>, {}). From module __main__. From function client.main(). 
 DEBUG | 2022-12-19 12:17:57,132 | client.py | Called function answer_handler with params (<__main__.Client object at 0x00000244BB0AD240>, {'response': 200}, {}). From module __main__. From function client.main(). 
 DEBUG | 2022-12-19 12:17:57,133 | client.py | Called function main with params (<__main__.Client object at 0x00000244BB0AD240>, {}). From module __main__. From function client.main(). 
+DEBUG | 2022-12-21 09:55:37,942 | client_logs_config.py | test debug message
+INFO | 2022-12-21 09:55:37,942 | client_logs_config.py | test info message
+ERROR | 2022-12-21 09:55:37,943 | client_logs_config.py | test error message
+CRITICAL | 2022-12-21 09:55:37,943 | client_logs_config.py | test critical message
+INFO | 2022-12-21 09:56:17,905 | client.py | Client created, Account: Guest
+ERROR | 2022-12-21 09:56:19,912 | client.py | Connection error
+INFO | 2022-12-21 09:56:23,361 | client.py | Client created, Account: Guest
+ERROR | 2022-12-21 09:56:25,413 | client.py | Connection error
+INFO | 2022-12-21 10:35:21,627 | client.py | Client created, Account: Guest
+DEBUG | 2022-12-21 10:35:21,628 | client.py | Presence created
+DEBUG | 2022-12-21 10:35:21,630 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000002A959C16E30>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2022-12-21 10:35:21,842 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000002A959C16E30>, {'response': 200}), {}). From module __main__. From function client.main(). 
+INFO | 2022-12-21 10:35:21,844 | client.py | Connected. Server answer: OK
+INFO | 2022-12-21 10:35:32,227 | client.py | Client created, Account: Guest
+DEBUG | 2022-12-21 10:35:32,229 | client.py | Presence created
+DEBUG | 2022-12-21 10:35:32,230 | client.py | Called function create_presence with params ((<__main__.Client object at 0x0000029B20F06E30>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2022-12-21 10:35:32,431 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x0000029B20F06E30>, {'response': 200}), {}). From module __main__. From function client.main(). 
+INFO | 2022-12-21 10:35:32,431 | client.py | Connected. Server answer: OK
