@@ -1,12 +1,18 @@
+import logging
 import socket
 import sys
 import time
 import project_logs.config.server_logs_config
-import logging
+
 from common.constants import *
+
 from common.utils import get_message, send_message
 from decors import Log
 import select
+
+from common.utils import *
+from decors import Log
+
 
 
 class Server:
@@ -34,7 +40,7 @@ class Server:
                 ERROR: 'BAD REQUEST'
             })
 
-    # @Log()
+    @Log()
     def main(self):
         if self.server_port < 1024 or self.server_port > 65535:
             self.SERVER_LOGGER.critical('Invalid server port')
