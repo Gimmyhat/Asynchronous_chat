@@ -28,3 +28,4 @@ ERROR = 'error'
 
 MESSAGE = 'msg'
 MESSAGE_TEXT = 'msg txt'
+EXIT = 'exit'

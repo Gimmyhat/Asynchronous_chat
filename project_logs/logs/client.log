@@ -23,4 +23,32 @@ INFO | 2022-12-21 10:35:32,227 | client.py | Client created, Account: Guest
 DEBUG | 2022-12-21 10:35:32,229 | client.py | Presence created
 DEBUG | 2022-12-21 10:35:32,230 | client.py | Called function create_presence with params ((<__main__.Client object at 0x0000029B20F06E30>,), {}). From module __main__. From function client.main(). 
 DEBUG | 2022-12-21 10:35:32,431 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x0000029B20F06E30>, {'response': 200}), {}). From module __main__. From function client.main(). 
-INFO | 2022-12-21 10:35:32,431 | client.py | Connected. Server answer: OK
+INFO | 2022-12-21 10:35:32,431 | client.py | Connected. Server answer: OKINFO | 2022-12-30 09:54:19,602 | client.py | Client created, Account: sasha
+DEBUG | 2022-12-30 09:54:19,611 | client.py | Presence created sasha
+DEBUG | 2022-12-30 09:54:19,617 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000001555AD5BDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2022-12-30 09:54:20,128 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000001555AD5BDC0>, {'response': 200}), {}). From module __main__. From function client.main(). 
+INFO | 2022-12-30 09:54:20,129 | client.py | Connected. Server answer: OK
+DEBUG | 2022-12-30 09:54:20,130 | client.py | Process started
+INFO | 2022-12-30 09:54:37,483 | client.py | Closing connection sasha
+DEBUG | 2022-12-30 09:54:37,950 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000001555AD5BDC0>, <socket.socket fd=388, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 61436), raddr=('127.0.0.1', 7777)>, 'sasha'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2022-12-30 09:54:37,995 | threading.py | Called function interface with params ((<__main__.Client object at 0x000001555AD5BDC0>, <socket.socket fd=388, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 61436), raddr=('127.0.0.1', 7777)>), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2022-12-30 09:54:38,262 | client.py | Called function main with params ((<__main__.Client object at 0x000001555AD5BDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2022-12-30 09:54:43,522 | client.py | Client created, Account: ura
+DEBUG | 2022-12-30 09:54:43,523 | client.py | Presence created ura
+DEBUG | 2022-12-30 09:54:43,524 | client.py | Called function create_presence with params ((<__main__.Client object at 0x00000192FDA5BDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2022-12-30 09:54:44,033 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x00000192FDA5BDC0>, {'response': 200}), {}). From module __main__. From function client.main(). 
+INFO | 2022-12-30 09:54:44,034 | client.py | Connected. Server answer: OK
+DEBUG | 2022-12-30 09:54:44,038 | client.py | Process started
+INFO | 2022-12-30 09:54:47,602 | client.py | Closing connection ura
+DEBUG | 2022-12-30 09:54:47,619 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x00000192FDA5BDC0>, <socket.socket fd=400, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 61457), raddr=('127.0.0.1', 7777)>, 'ura'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2022-12-30 09:54:48,073 | client.py | Called function main with params ((<__main__.Client object at 0x00000192FDA5BDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2022-12-30 09:54:53,002 | client.py | Client created, Account: john
+DEBUG | 2022-12-30 09:54:53,003 | client.py | Presence created john
+DEBUG | 2022-12-30 09:54:53,004 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000002A288FBBDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2022-12-30 09:54:53,525 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000002A288FBBDC0>, {'response': 200}), {}). From module __main__. From function client.main(). 
+INFO | 2022-12-30 09:54:53,526 | client.py | Connected. Server answer: OK
+DEBUG | 2022-12-30 09:54:53,531 | client.py | Process started
+INFO | 2022-12-30 09:54:56,154 | client.py | Closing connection john
+DEBUG | 2022-12-30 09:54:56,611 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000002A288FBBDC0>, <socket.socket fd=408, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 61458), raddr=('127.0.0.1', 7777)>, 'john'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2022-12-30 09:54:56,669 | threading.py | Called function interface with params ((<__main__.Client object at 0x000002A288FBBDC0>, <socket.socket fd=408, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 61458), raddr=('127.0.0.1', 7777)>), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2022-12-30 09:54:57,576 | client.py | Called function main with params ((<__main__.Client object at 0x000002A288FBBDC0>,), {}). From module __main__. From function client.main(). 
