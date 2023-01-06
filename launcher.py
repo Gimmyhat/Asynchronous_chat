@@ -12,11 +12,13 @@ while True:
     elif ACTION == 's':
         PROCESSES.append(subprocess.Popen('python server.py',
                                           creationflags=subprocess.CREATE_NEW_CONSOLE))
-        PROCESSES.append(subprocess.Popen('python client.py -n test1',
+        PROCESSES.append(subprocess.Popen('python client.py -n user_one',
                                           creationflags=subprocess.CREATE_NEW_CONSOLE))
-        PROCESSES.append(subprocess.Popen('python client.py -n test2',
+        PROCESSES.append(subprocess.Popen('python client.py -n user_two',
                                           creationflags=subprocess.CREATE_NEW_CONSOLE))
-        PROCESSES.append(subprocess.Popen('python client.py -n test3',
+        PROCESSES.append(subprocess.Popen('python client.py -n user_three',
+                                          creationflags=subprocess.CREATE_NEW_CONSOLE))
+        PROCESSES.append(subprocess.Popen('python client.py -n user_four',
                                           creationflags=subprocess.CREATE_NEW_CONSOLE))
     elif ACTION == 'x':
         while PROCESSES:

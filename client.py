@@ -1,9 +1,8 @@
 import logging
 import socket
 import sys
-import time
-import project_logs.config.client_logs_config
 import threading
+import time
 
 from common.constants import *
 from common.utils import *
@@ -135,11 +134,12 @@ class Client:
 
 if __name__ == '__main__':
     try:
-        if sys.argv[1]:
-            DEFAULT_IP_ADDRESS = sys.argv[1]
-        if sys.argv[2]:
-            DEFAULT_PORT = sys.argv[2]
+        if '-n' in sys.argv:
+            account_name = sys.argv[sys.argv.index('-n') + 1]
+            client = Client(account_name=account_name)
+        else:
+            client = Client(account_name=input('Input name: '))
     except:
         pass
-    client = Client(account_name=input('Input name: '))
-    client.main()
+    finally:
+        client.main()
