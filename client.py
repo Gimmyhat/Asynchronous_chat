@@ -1,145 +1,211 @@
-import logging
+import argparse
 import socket
-import sys
 import threading
 import time
 
-from common.constants import *
 from common.utils import *
-from decors import Log
+from decors import log
+from errors import IncorrectDataRecivedError, ReqFieldMissingError, ServerError
+from metaclasses import ClientMaker
+
+# Инициализация клиентского логера
+logger = logging.getLogger('client')
 
 
-class Client:
-    CLIENT_LOGGER = logging.getLogger('client_logger')
-
-    def __init__(self, account_name, server_address=DEFAULT_IP_ADDRESS,
-                 server_port=DEFAULT_PORT):
-        self.server_address = server_address
-        self.server_port = int(server_port)
+# Класс формировки и отправки сообщений на сервер и взаимодействия с пользователем.
+class ClientSender(threading.Thread, metaclass=ClientMaker):
+    def __init__(self, account_name, sock):
         self.account_name = account_name
+        self.sock = sock
+        super().__init__()
 
-    @Log()
-    def create_presence(self):
-        out_mes = {
-            ACTION: PRESENCE,
+    # Функция создаёт словарь с сообщением о выходе.
+    def create_exit_message(self):
+        return {
+            ACTION: EXIT,
             TIME: time.time(),
-            USER: {
-                ACCOUNT_NAME: self.account_name
-            }
+            ACCOUNT_NAME: self.account_name
         }
-        self.CLIENT_LOGGER.debug(f'Presence created {self.account_name}')
-        return out_mes
 
-    @Log()
-    def receive_message(self, sock, account):
-        while True:
-            try:
-                message = get_message(sock)
-                if ACTION in message and message[ACTION] == MESSAGE and SENDER in message \
-                        and MESSAGE_TEXT in message and DESTINATION in message and message[DESTINATION] == account:
-                    print(f'Message from {message[SENDER]}: {message[MESSAGE_TEXT]}')
-                    self.CLIENT_LOGGER.info(f'Message from {message[SENDER]}: {message[MESSAGE_TEXT]}')
-                    continue
-                else:
-                    self.CLIENT_LOGGER.error(f'Invalid message from server: {message}')
-            except:
-                print(f'Connection lost')
-                break
-
-    def help_screen(self):
-        print('Commands:')
-        print('Input exit to close connection;')
-        print('Input message to send message;')
-
-    def create_message(self, sock):
-        dest = input(f'Input message destination: ')
-        message = input(f'Input message: ')
+    # Функция запрашивает кому отправить сообщение и само сообщение, и отправляет полученные данные на сервер.
+    def create_message(self):
+        to = input('Введите получателя сообщения: ')
+        message = input('Введите сообщение для отправки: ')
         message_dict = {
             ACTION: MESSAGE,
             SENDER: self.account_name,
-            DESTINATION: dest,
+            DESTINATION: to,
             TIME: time.time(),
             MESSAGE_TEXT: message
         }
-        self.CLIENT_LOGGER.info(f'Message dict created: {message_dict}')
+        logger.debug(f'Сформирован словарь сообщения: {message_dict}')
         try:
-            send_message(sock, message_dict)
-            self.CLIENT_LOGGER.info(f'Sending message to {dest}')
+            send_message(self.sock, message_dict)
+            logger.info(f'Отправлено сообщение для пользователя {to}')
         except:
-            self.CLIENT_LOGGER.critical('Connection error (create_message)')
-            sys.exit(1)
+            logger.critical('Потеряно соединение с сервером.')
+            exit(1)
 
-    @Log()
-    def interface(self, sock):
-        self.help_screen()
-
+    # Функция взаимодействия с пользователем, запрашивает команды, отправляет сообщения
+    def run(self):
+        self.print_help()
         while True:
-            command = input('Command: ')
+            command = input('Введите команду: ')
             if command == 'message':
-                self.create_message(sock)
+                self.create_message()
             elif command == 'help':
-                self.help_screen()
+                self.print_help()
             elif command == 'exit':
-                exit_dict = {
-                    ACTION: EXIT,
-                    TIME: time.time(),
-                    ACCOUNT_NAME: self.account_name}
-                send_message(sock, exit_dict)
-                print('Closing connection')
-                self.CLIENT_LOGGER.info(f'Closing connection {self.account_name}')
+                try:
+                    send_message(self.sock, self.create_exit_message())
+                except:
+                    pass
+                print('Завершение соединения.')
+                logger.info('Завершение работы по команде пользователя.')
+                # Задержка неоходима, чтобы успело уйти сообщение о выходе
                 time.sleep(0.5)
                 break
             else:
-                print('Unknown command')
+                print('Команда не распознана, попробойте снова. help - вывести поддерживаемые команды.')
 
-    @Log()
-    def answer_handler(self, message):
-        if RESPONSE in message:
-            if message[RESPONSE] == 200:
-                return 'OK'
-            return f'400 : {message[ERROR]}'
-        self.CLIENT_LOGGER.critical('Invalid message')
-        raise ValueError
+    # Функция выводящяя справку по использованию.
+    def print_help(self):
+        print('Поддерживаемые команды:')
+        print('message - отправить сообщение. Кому и текст будет запрошены отдельно.')
+        print('help - вывести подсказки по командам')
+        print('exit - выход из программы')
 
-    @Log()
-    def main(self):
-        if self.server_port < 1024 or self.server_port > 65535:
-            raise ValueError
-        self.CLIENT_LOGGER.info(f'Client created, Account: {self.account_name}')
-        try:
-            transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            transport.connect((self.server_address, self.server_port))
-            send_message(transport, self.create_presence())
-            answer = self.answer_handler(get_message(transport))
-            self.CLIENT_LOGGER.info(f'Connected. Server answer: {answer}')
-            print('Connected')
-        except:
-            self.CLIENT_LOGGER.error(f'Connection error (main)')
-            sys.exit(1)
-        else:
-            user_interface = threading.Thread(target=self.interface, args=(transport,))
-            user_interface.daemon = True
-            user_interface.start()
-            receiving = threading.Thread(target=self.receive_message, args=(transport, self.account_name))
-            receiving.daemon = True
-            receiving.start()
-            self.CLIENT_LOGGER.debug('Process started')
 
-            while True:
-                time.sleep(1)
-                if receiving.is_alive() and user_interface.is_alive():
-                    continue
+# Класс-приёмник сообщений с сервера. Принимает сообщения, выводит в консоль.
+class ClientReader(threading.Thread, metaclass=ClientMaker):
+    def __init__(self, account_name, sock):
+        self.account_name = account_name
+        self.sock = sock
+        super().__init__()
+
+    # Основной цикл приёмника сообщений, принимает сообщения, выводит в консоль. Завершается при потере соединения.
+    def run(self):
+        while True:
+            try:
+                message = get_message(self.sock)
+                if ACTION in message and message[ACTION] == MESSAGE and SENDER in message and DESTINATION in message \
+                        and MESSAGE_TEXT in message and message[DESTINATION] == self.account_name:
+                    print(f'\nПолучено сообщение от пользователя {message[SENDER]}:\n{message[MESSAGE_TEXT]}')
+                    logger.info(f'Получено сообщение от пользователя {message[SENDER]}:\n{message[MESSAGE_TEXT]}')
+                else:
+                    logger.error(f'Получено некорректное сообщение с сервера: {message}')
+            except IncorrectDataRecivedError:
+                logger.error(f'Не удалось декодировать полученное сообщение.')
+            except (OSError, ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError):
+                logger.critical(f'Потеряно соединение с сервером.')
                 break
 
 
-if __name__ == '__main__':
+# Функция генерирует запрос о присутствии клиента
+@log
+def create_presence(account_name):
+    out = {
+        ACTION: PRESENCE,
+        TIME: time.time(),
+        USER: {
+            ACCOUNT_NAME: account_name
+        }
+    }
+    logger.debug(f'Сформировано {PRESENCE} сообщение для пользователя {account_name}')
+    return out
+
+
+# Функция разбирает ответ сервера на сообщение о присутствии, возращает 200 если все ОК или генерирует исключение при\
+# ошибке.
+@log
+def process_response_ans(message):
+    logger.debug(f'Разбор приветственного сообщения от сервера: {message}')
+    if RESPONSE in message:
+        if message[RESPONSE] == 200:
+            return '200 : OK'
+        elif message[RESPONSE] == 400:
+            raise ServerError(f'400 : {message[ERROR]}')
+    raise ReqFieldMissingError(RESPONSE)
+
+
+# Парсер аргументов коммандной строки
+@log
+def arg_parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('addr', default=DEFAULT_IP_ADDRESS, nargs='?')
+    parser.add_argument('port', default=DEFAULT_PORT, type=int, nargs='?')
+    parser.add_argument('-n', '--name', default=None, nargs='?')
+    namespace = parser.parse_args(sys.argv[1:])
+    server_address = namespace.addr
+    server_port = namespace.port
+    client_name = namespace.name
+
+    # проверим подходящий номер порта
+    if not 1023 < server_port < 65536:
+        logger.critical(
+            f'Попытка запуска клиента с неподходящим номером порта: {server_port}. Допустимы адреса с 1024 до 65535. Клиент завершается.')
+        exit(1)
+
+    return server_address, server_port, client_name
+
+
+def main():
+    # Сообщаем о запуске
+    print('Консольный месседжер. Клиентский модуль.')
+
+    # Загружаем параметы коммандной строки
+    server_address, server_port, client_name = arg_parser()
+
+    # Если имя пользователя не было задано, необходимо запросить пользователя.
+    if not client_name:
+        client_name = input('Введите имя пользователя: ')
+    else:
+        print(f'Клиентский модуль запущен с именем: {client_name}')
+
+    logger.info(
+        f'Запущен клиент с парамертами: адрес сервера: {server_address} , порт: {server_port}, имя пользователя: {client_name}')
+
+    # Инициализация сокета и сообщение серверу о нашем появлении
     try:
-        if '-n' in sys.argv:
-            account_name = sys.argv[sys.argv.index('-n') + 1]
-            client = Client(account_name=account_name)
-        else:
-            client = Client(account_name=input('Input name: '))
-    except:
-        pass
-    finally:
-        client.main()
+        transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        transport.connect((server_address, server_port))
+        send_message(transport, create_presence(client_name))
+        answer = process_response_ans(get_message(transport))
+        logger.info(f'Установлено соединение с сервером. Ответ сервера: {answer}')
+        print(f'Установлено соединение с сервером.')
+    except json.JSONDecodeError:
+        logger.error('Не удалось декодировать полученную Json строку.')
+        exit(1)
+    except ServerError as error:
+        logger.error(f'При установке соединения сервер вернул ошибку: {error.text}')
+        exit(1)
+    except ReqFieldMissingError as missing_error:
+        logger.error(f'В ответе сервера отсутствует необходимое поле {missing_error.missing_field}')
+        exit(1)
+    except (ConnectionRefusedError, ConnectionError):
+        logger.critical(
+            f'Не удалось подключиться к серверу {server_address}:{server_port}, конечный компьютер отверг запрос на подключение.')
+        exit(1)
+    else:
+        # Если соединение с сервером установлено корректно, запускаем клиенский процесс приёма сообщний
+        module_reciver = ClientReader(client_name, transport)
+        module_reciver.daemon = True
+        module_reciver.start()
+
+        # затем запускаем отправку сообщений и взаимодействие с пользователем.
+        module_sender = ClientSender(client_name, transport)
+        module_sender.daemon = True
+        module_sender.start()
+        logger.debug('Запущены процессы')
+
+        # Watchdog основной цикл, если один из потоков завершён, то значит или потеряно соединение или пользователь
+        # ввёл exit. Поскольку все события обработываются в потоках, достаточно просто завершить цикл.
+        while True:
+            time.sleep(1)
+            if module_reciver.is_alive() and module_sender.is_alive():
+                continue
+            break
+
+
+if __name__ == '__main__':
+    main()

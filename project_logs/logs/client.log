@@ -52,3 +52,219 @@ INFO | 2022-12-30 09:54:56,154 | client.py | Closing connection john
 DEBUG | 2022-12-30 09:54:56,611 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000002A288FBBDC0>, <socket.socket fd=408, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 61458), raddr=('127.0.0.1', 7777)>, 'john'), {}). From module __main__. From function self._bootstrap_inner(). 
 DEBUG | 2022-12-30 09:54:56,669 | threading.py | Called function interface with params ((<__main__.Client object at 0x000002A288FBBDC0>, <socket.socket fd=408, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 61458), raddr=('127.0.0.1', 7777)>), {}). From module __main__. From function self._bootstrap_inner(). 
 DEBUG | 2022-12-30 09:54:57,576 | client.py | Called function main with params ((<__main__.Client object at 0x000002A288FBBDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 22:48:24,247 | client_logs_config.py | test debug message
+INFO | 2023-01-06 22:48:24,248 | client_logs_config.py | test info message
+ERROR | 2023-01-06 22:48:24,248 | client_logs_config.py | test error message
+CRITICAL | 2023-01-06 22:48:24,248 | client_logs_config.py | test critical message
+INFO | 2023-01-06 22:48:55,203 | client.py | Client created, Account: Kid
+DEBUG | 2023-01-06 22:48:55,204 | client.py | Presence created Kid
+DEBUG | 2023-01-06 22:48:55,211 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000001FA60F6CA30>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 22:48:55,711 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000001FA60F6CA30>, {'response': 200}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 22:48:55,712 | client.py | Connected. Server answer: OK
+DEBUG | 2023-01-06 22:48:55,713 | client.py | Process started
+INFO | 2023-01-06 22:57:07,401 | client.py | Client created, Account: pet1
+DEBUG | 2023-01-06 22:57:07,402 | client.py | Presence created pet1
+DEBUG | 2023-01-06 22:57:07,404 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000001E7044BBDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 22:57:07,922 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000001E7044BBDC0>, {'response': 200}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 22:57:07,923 | client.py | Connected. Server answer: OK
+DEBUG | 2023-01-06 22:57:07,930 | client.py | Process started
+INFO | 2023-01-06 22:57:17,633 | client.py | Client created, Account: pet2
+DEBUG | 2023-01-06 22:57:17,634 | client.py | Presence created pet2
+DEBUG | 2023-01-06 22:57:17,636 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000001BC44E9BDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 22:57:18,156 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000001BC44E9BDC0>, {'response': 200}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 22:57:18,158 | client.py | Connected. Server answer: OK
+DEBUG | 2023-01-06 22:57:18,163 | client.py | Process started
+INFO | 2023-01-06 22:57:40,168 | client.py | Message dict created: {'action': 'msg', 'from': 'pet1', 'to': 'pet2', 'time': 1673017060.1689954, 'msg txt': 'hello!'}
+INFO | 2023-01-06 22:57:40,170 | client.py | Sending message to pet2
+INFO | 2023-01-06 22:57:40,590 | client.py | Message from pet1: hello!
+INFO | 2023-01-06 22:57:59,785 | client.py | Client created, Account: pet3
+DEBUG | 2023-01-06 22:57:59,786 | client.py | Presence created pet3
+DEBUG | 2023-01-06 22:57:59,787 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000001CE2135BDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 22:58:00,301 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000001CE2135BDC0>, {'response': 200}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 22:58:00,303 | client.py | Connected. Server answer: OK
+DEBUG | 2023-01-06 22:58:00,309 | client.py | Process started
+INFO | 2023-01-06 22:58:20,481 | client.py | Message dict created: {'action': 'msg', 'from': 'pet1', 'to': 'pet3', 'time': 1673017100.481057, 'msg txt': 'Hi pet3'}
+INFO | 2023-01-06 22:58:20,482 | client.py | Sending message to pet3
+INFO | 2023-01-06 22:58:20,671 | client.py | Message from pet1: Hi pet3
+INFO | 2023-01-06 22:58:45,377 | client.py | Closing connection pet1
+DEBUG | 2023-01-06 22:58:45,653 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000001E7044BBDC0>, <socket.socket fd=364, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51319), raddr=('127.0.0.1', 7777)>, 'pet1'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 22:58:45,785 | client.py | Called function main with params ((<__main__.Client object at 0x000001E7044BBDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:00:46,265 | client.py | Client created, Account: nik
+DEBUG | 2023-01-06 23:00:46,266 | client.py | Presence created nik
+DEBUG | 2023-01-06 23:00:46,268 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000002104029BDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:00:46,776 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000002104029BDC0>, {'response': 200}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:00:46,778 | client.py | Connected. Server answer: OK
+DEBUG | 2023-01-06 23:00:46,784 | client.py | Process started
+INFO | 2023-01-06 23:01:05,577 | client.py | Message dict created: {'action': 'msg', 'from': 'nik', 'to': 'test2', 'time': 1673017265.5771189, 'msg txt': 'Hi!'}
+INFO | 2023-01-06 23:01:05,578 | client.py | Sending message to test2
+INFO | 2023-01-06 23:11:18,060 | client.py | Client created, Account: test3
+DEBUG | 2023-01-06 23:11:18,062 | client.py | Presence created test3
+DEBUG | 2023-01-06 23:11:18,063 | client.py | Called function create_presence with params ((<__main__.Client object at 0x0000027A3724BDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:11:18,066 | client.py | Client created, Account: test4
+DEBUG | 2023-01-06 23:11:18,068 | client.py | Presence created test4
+DEBUG | 2023-01-06 23:11:18,069 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000001D974CCBDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:11:18,076 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x0000027A3724BDC0>, {'response': 200}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:11:18,076 | client.py | Connected. Server answer: OK
+DEBUG | 2023-01-06 23:11:18,080 | client.py | Process started
+INFO | 2023-01-06 23:11:18,095 | client.py | Client created, Account: test1
+DEBUG | 2023-01-06 23:11:18,097 | client.py | Presence created test1
+DEBUG | 2023-01-06 23:11:18,098 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000002D76B42BDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:11:18,099 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000001D974CCBDC0>, {'response': 200}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:11:18,099 | client.py | Connected. Server answer: OK
+DEBUG | 2023-01-06 23:11:18,101 | client.py | Process started
+INFO | 2023-01-06 23:11:18,105 | client.py | Client created, Account: test2
+DEBUG | 2023-01-06 23:11:18,107 | client.py | Presence created test2
+DEBUG | 2023-01-06 23:11:18,108 | client.py | Called function create_presence with params ((<__main__.Client object at 0x0000016E6D53BDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:11:18,109 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000002D76B42BDC0>, {'response': 200}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:11:18,109 | client.py | Connected. Server answer: OK
+DEBUG | 2023-01-06 23:11:18,111 | client.py | Process started
+DEBUG | 2023-01-06 23:11:18,621 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x0000016E6D53BDC0>, {'response': 200}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:11:18,621 | client.py | Connected. Server answer: OK
+DEBUG | 2023-01-06 23:11:18,623 | client.py | Process started
+INFO | 2023-01-06 23:11:53,258 | client.py | Message dict created: {'action': 'msg', 'from': 'test3', 'to': 'test2', 'time': 1673017913.2585733, 'msg txt': 'Hi!'}
+INFO | 2023-01-06 23:11:53,259 | client.py | Sending message to test2
+INFO | 2023-01-06 23:11:53,768 | client.py | Message from test3: Hi!
+INFO | 2023-01-06 23:25:11,949 | client.py | Client created, Account: test1
+DEBUG | 2023-01-06 23:25:11,950 | client.py | Presence created test1
+DEBUG | 2023-01-06 23:25:11,952 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000001989DE9BDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:25:11,966 | client.py | Client created, Account: test2
+DEBUG | 2023-01-06 23:25:11,967 | client.py | Presence created test2
+DEBUG | 2023-01-06 23:25:11,969 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000001A97A0FBDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:25:11,974 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000001989DE9BDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:25:11,974 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:25:11,976 | client.py | Process started
+DEBUG | 2023-01-06 23:25:11,978 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000001989DE9BDC0>, <socket.socket fd=444, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51602), raddr=('127.0.0.1', 7777)>, 'test1'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:25:12,491 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000001A97A0FBDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:25:12,492 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:25:12,493 | client.py | Process started
+DEBUG | 2023-01-06 23:25:12,494 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000001A97A0FBDC0>, <socket.socket fd=496, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51603), raddr=('127.0.0.1', 7777)>, 'test2'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:25:12,979 | client.py | Called function main with params ((<__main__.Client object at 0x000001989DE9BDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:25:13,500 | client.py | Called function main with params ((<__main__.Client object at 0x000001A97A0FBDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:26:30,995 | client.py | Client created, Account: test1
+DEBUG | 2023-01-06 23:26:30,997 | client.py | Presence created test1
+DEBUG | 2023-01-06 23:26:30,998 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000002E3379EBDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:26:31,002 | client.py | Client created, Account: test2
+DEBUG | 2023-01-06 23:26:31,003 | client.py | Presence created test2
+DEBUG | 2023-01-06 23:26:31,005 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000001B30EB4BDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:26:31,007 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000002E3379EBDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:26:31,008 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:26:31,011 | client.py | Process started
+DEBUG | 2023-01-06 23:26:31,013 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000002E3379EBDC0>, <socket.socket fd=472, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51616), raddr=('127.0.0.1', 7777)>, 'test1'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:26:31,516 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000001B30EB4BDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:26:31,516 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:26:31,518 | client.py | Process started
+DEBUG | 2023-01-06 23:26:31,520 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000001B30EB4BDC0>, <socket.socket fd=308, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51617), raddr=('127.0.0.1', 7777)>, 'test2'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:26:32,022 | client.py | Called function main with params ((<__main__.Client object at 0x000002E3379EBDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:26:32,522 | client.py | Called function main with params ((<__main__.Client object at 0x000001B30EB4BDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:26:39,186 | client.py | Client created, Account: test2
+DEBUG | 2023-01-06 23:26:39,187 | client.py | Presence created test2
+DEBUG | 2023-01-06 23:26:39,189 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000001D55F83BDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:26:39,204 | client.py | Client created, Account: test1
+DEBUG | 2023-01-06 23:26:39,205 | client.py | Presence created test1
+DEBUG | 2023-01-06 23:26:39,206 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000001F65AB8BDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:26:39,210 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000001D55F83BDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:26:39,210 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:26:39,212 | client.py | Process started
+DEBUG | 2023-01-06 23:26:39,215 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000001D55F83BDC0>, <socket.socket fd=348, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51618), raddr=('127.0.0.1', 7777)>, 'test2'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:26:39,715 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000001F65AB8BDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:26:39,715 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:26:39,716 | client.py | Process started
+DEBUG | 2023-01-06 23:26:39,717 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000001F65AB8BDC0>, <socket.socket fd=404, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51619), raddr=('127.0.0.1', 7777)>, 'test1'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:26:40,221 | client.py | Called function main with params ((<__main__.Client object at 0x000001D55F83BDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:26:40,728 | client.py | Called function main with params ((<__main__.Client object at 0x000001F65AB8BDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:26:42,696 | client.py | Client created, Account: test1
+DEBUG | 2023-01-06 23:26:42,697 | client.py | Presence created test1
+DEBUG | 2023-01-06 23:26:42,699 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000002572ADABDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:26:42,730 | client.py | Client created, Account: test2
+DEBUG | 2023-01-06 23:26:42,732 | client.py | Presence created test2
+DEBUG | 2023-01-06 23:26:42,733 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000002069FE9BDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:26:42,735 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000002572ADABDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:26:42,735 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:26:42,738 | client.py | Process started
+DEBUG | 2023-01-06 23:26:42,740 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000002572ADABDC0>, <socket.socket fd=480, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51624), raddr=('127.0.0.1', 7777)>, 'test1'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:26:43,245 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000002069FE9BDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:26:43,245 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:26:43,247 | client.py | Process started
+DEBUG | 2023-01-06 23:26:43,248 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000002069FE9BDC0>, <socket.socket fd=412, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51625), raddr=('127.0.0.1', 7777)>, 'test2'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:26:43,751 | client.py | Called function main with params ((<__main__.Client object at 0x000002572ADABDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:26:44,255 | client.py | Called function main with params ((<__main__.Client object at 0x000002069FE9BDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:26:47,213 | client.py | Client created, Account: test2
+DEBUG | 2023-01-06 23:26:47,215 | client.py | Presence created test2
+INFO | 2023-01-06 23:26:47,216 | client.py | Client created, Account: test1
+ with params ((<__main__.Client object at 0x000002414A2FBDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:26:47,217 | client.py | Presence created test1
+DEBUG | 2023-01-06 23:26:47,219 | client.py | Called function create_presence with params ((<__main__.Client object at 0x0000029850F7BDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:26:47,222 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000002414A2FBDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:26:47,222 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:26:47,230 | client.py | Process started
+DEBUG | 2023-01-06 23:26:47,234 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000002414A2FBDC0>, <socket.socket fd=464, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51626), raddr=('127.0.0.1', 7777)>, 'test2'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:26:47,734 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x0000029850F7BDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:26:47,734 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:26:47,736 | client.py | Process started
+DEBUG | 2023-01-06 23:26:47,738 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x0000029850F7BDC0>, <socket.socket fd=464, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51627), raddr=('127.0.0.1', 7777)>, 'test1'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:26:48,241 | client.py | Called function main with params ((<__main__.Client object at 0x000002414A2FBDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:26:48,744 | client.py | Called function main with params ((<__main__.Client object at 0x0000029850F7BDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:27:24,855 | client.py | Client created, Account: test1
+DEBUG | 2023-01-06 23:27:24,856 | client.py | Presence created test1
+DEBUG | 2023-01-06 23:27:24,857 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000001CB1C7CBDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:27:24,863 | client.py | Client created, Account: test3
+DEBUG | 2023-01-06 23:27:24,864 | client.py | Presence created test3
+DEBUG | 2023-01-06 23:27:24,865 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000001C9960EBDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:27:24,868 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000001CB1C7CBDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:27:24,869 | client.py | Connected. Server answer: 400 : BAD REQUEST
+INFO | 2023-01-06 23:27:24,876 | client.py | Client created, Account: test2
+DEBUG | 2023-01-06 23:27:24,877 | client.py | Presence created test2
+DEBUG | 2023-01-06 23:27:24,879 | client.py | Called function create_presence with params ((<__main__.Client object at 0x00000232CEEABDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:27:24,880 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000001C9960EBDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:27:24,880 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:27:24,881 | client.py | Process started
+DEBUG | 2023-01-06 23:27:24,883 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000001CB1C7CBDC0>, <socket.socket fd=448, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51646), raddr=('127.0.0.1', 7777)>, 'test1'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:27:24,884 | client.py | Process started
+DEBUG | 2023-01-06 23:27:24,886 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000001C9960EBDC0>, <socket.socket fd=456, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51647), raddr=('127.0.0.1', 7777)>, 'test3'), {}). From module __main__. From function self._bootstrap_inner(). 
+INFO | 2023-01-06 23:27:24,923 | client.py | Client created, Account: test4
+DEBUG | 2023-01-06 23:27:24,925 | client.py | Presence created test4
+DEBUG | 2023-01-06 23:27:24,926 | client.py | Called function create_presence with params ((<__main__.Client object at 0x000001FFD3EFBDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:27:24,927 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x00000232CEEABDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:27:24,928 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:27:24,929 | client.py | Process started
+DEBUG | 2023-01-06 23:27:24,930 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x00000232CEEABDC0>, <socket.socket fd=432, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51648), raddr=('127.0.0.1', 7777)>, 'test2'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:27:25,445 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x000001FFD3EFBDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:27:25,446 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:27:25,447 | client.py | Process started
+DEBUG | 2023-01-06 23:27:25,448 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x000001FFD3EFBDC0>, <socket.socket fd=396, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51649), raddr=('127.0.0.1', 7777)>, 'test4'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:27:25,885 | client.py | Called function main with params ((<__main__.Client object at 0x000001CB1C7CBDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:27:25,901 | client.py | Called function main with params ((<__main__.Client object at 0x000001C9960EBDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:27:25,932 | client.py | Called function main with params ((<__main__.Client object at 0x00000232CEEABDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:27:26,464 | client.py | Called function main with params ((<__main__.Client object at 0x000001FFD3EFBDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:27:49,410 | client.py | Client created, Account: test1
+DEBUG | 2023-01-06 23:27:49,413 | client.py | Presence created test1
+DEBUG | 2023-01-06 23:27:49,418 | client.py | Called function create_presence with params ((<__main__.Client object at 0x00000239230ABDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:27:49,435 | client.py | Client created, Account: test3
+DEBUG | 2023-01-06 23:27:49,441 | client.py | Presence created test3
+DEBUG | 2023-01-06 23:27:49,444 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x00000239230ABDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:27:49,444 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:27:49,446 | client.py | Called function create_presence with params ((<__main__.Client object at 0x00000291EF32BDC0>,), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:27:49,451 | client.py | Client created, Account: test4
+DEBUG | 2023-01-06 23:27:49,451 | client.py | Process started
+DEBUG | 2023-01-06 23:27:49,452 | client.py | Presence created test4
+DEBUG | 2023-01-06 23:27:49,454 | client.py | Called function create_presence with params ((<__main__.Client object at 0x0000018D45DCBDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:27:49,455 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x00000291EF32BDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:27:49,456 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:27:49,459 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x00000239230ABDC0>, <socket.socket fd=340, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51652), raddr=('127.0.0.1', 7777)>, 'test1'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:27:49,460 | client.py | Process started
+DEBUG | 2023-01-06 23:27:49,462 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x00000291EF32BDC0>, <socket.socket fd=468, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51653), raddr=('127.0.0.1', 7777)>, 'test3'), {}). From module __main__. From function self._bootstrap_inner(). 
+INFO | 2023-01-06 23:27:49,463 | client.py | Client created, Account: test2
+DEBUG | 2023-01-06 23:27:49,465 | client.py | Presence created test2
+DEBUG | 2023-01-06 23:27:49,466 | client.py | Called function create_presence with params ((<__main__.Client object at 0x0000021411E9BDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:27:49,467 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x0000018D45DCBDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:27:49,467 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:27:49,469 | client.py | Process started
+DEBUG | 2023-01-06 23:27:49,470 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x0000018D45DCBDC0>, <socket.socket fd=424, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51654), raddr=('127.0.0.1', 7777)>, 'test4'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:27:50,025 | client.py | Called function answer_handler with params ((<__main__.Client object at 0x0000021411E9BDC0>, {'response': 400, 'error': 'BAD REQUEST'}), {}). From module __main__. From function client.main(). 
+INFO | 2023-01-06 23:27:50,025 | client.py | Connected. Server answer: 400 : BAD REQUEST
+DEBUG | 2023-01-06 23:27:50,028 | client.py | Process started
+DEBUG | 2023-01-06 23:27:50,030 | threading.py | Called function receive_message with params ((<__main__.Client object at 0x0000021411E9BDC0>, <socket.socket fd=312, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51655), raddr=('127.0.0.1', 7777)>, 'test2'), {}). From module __main__. From function self._bootstrap_inner(). 
+DEBUG | 2023-01-06 23:27:50,463 | client.py | Called function main with params ((<__main__.Client object at 0x00000291EF32BDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:27:50,463 | client.py | Called function main with params ((<__main__.Client object at 0x00000239230ABDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:27:50,480 | client.py | Called function main with params ((<__main__.Client object at 0x0000018D45DCBDC0>,), {}). From module __main__. From function client.main(). 
+DEBUG | 2023-01-06 23:27:51,031 | client.py | Called function main with params ((<__main__.Client object at 0x0000021411E9BDC0>,), {}). From module __main__. From function client.main(). 
