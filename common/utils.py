@@ -2,8 +2,8 @@ import json
 import sys
 
 from common.variables import *
-from decors import log
-from errors import IncorrectDataRecivedError, NonDictInputError
+from common.decors import log
+from common.errors import IncorrectDataRecivedError, NonDictInputError
 
 sys.path.append('../')
 
