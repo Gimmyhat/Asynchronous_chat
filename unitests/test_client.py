@@ -1,8 +1,13 @@
 import unittest
 
-from common.constants import RESPONSE, ERROR, USER, ACCOUNT_NAME, TIME, ACTION, PRESENCE
-
 from client import Client
+from common.constants import ACCOUNT_NAME
+from common.constants import ACTION
+from common.constants import ERROR
+from common.constants import PRESENCE
+from common.constants import RESPONSE
+from common.constants import TIME
+from common.constants import USER
 
 
 class TestClient(unittest.TestCase):
@@ -11,17 +16,17 @@ class TestClient(unittest.TestCase):
     def test_presence(self):
         test = self.client.create_presence()
         test[TIME] = 2
-        self.assertEqual(test, {ACTION: PRESENCE, TIME: 2, USER: {ACCOUNT_NAME: 'Guest'}})
+        self.assertEqual(test, {ACTION: PRESENCE, TIME: 2, USER: {ACCOUNT_NAME: "Guest"}})
 
     def test_200(self):
-        self.assertEqual(self.client.answer_handler({RESPONSE: 200}), 'OK')
+        self.assertEqual(self.client.answer_handler({RESPONSE: 200}), "OK")
 
     def test_400(self):
-        self.assertEqual(self.client.answer_handler({RESPONSE: 400, ERROR: 'Bad Request'}), '400 : Bad Request')
+        self.assertEqual(self.client.answer_handler({RESPONSE: 400, ERROR: "Bad Request"}), "400 : Bad Request")
 
     def test_no_response(self):
-        self.assertRaises(ValueError, self.client.answer_handler, {ERROR: 'Bad Request'})
+        self.assertRaises(ValueError, self.client.answer_handler, {ERROR: "Bad Request"})
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

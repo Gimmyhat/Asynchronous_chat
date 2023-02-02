@@ -1,7 +1,15 @@
 import datetime
 
-from sqlalchemy import create_engine, Table, Column, Integer, String, MetaData, ForeignKey, DateTime
-from sqlalchemy.orm import mapper, sessionmaker
+from sqlalchemy import Column
+from sqlalchemy import create_engine
+from sqlalchemy import DateTime
+from sqlalchemy import ForeignKey
+from sqlalchemy import Integer
+from sqlalchemy import MetaData
+from sqlalchemy import String
+from sqlalchemy import Table
+from sqlalchemy.orm import mapper
+from sqlalchemy.orm import sessionmaker
 
 
 # Класс - серверная база данных:
@@ -49,51 +57,35 @@ class ServerStorage:
     def __init__(self, path):
         # Создаём движок базы данных
         print(path)
-        self.database_engine = create_engine(f'sqlite:///{path}', echo=False, pool_recycle=7200,
-                                             connect_args={'check_same_thread': False})
+        self.database_engine = create_engine(f"sqlite:///{path}", echo=False, pool_recycle=7200, connect_args={"check_same_thread": False})
 
         # Создаём объект MetaData
         self.metadata = MetaData()
 
         # Создаём таблицу пользователей
-        users_table = Table('Users', self.metadata,
-                            Column('id', Integer, primary_key=True),
-                            Column('name', String, unique=True),
-                            Column('last_login', DateTime)
-                            )
+        users_table = Table("Users", self.metadata, Column("id", Integer, primary_key=True), Column("name", String, unique=True), Column("last_login", DateTime))
 
         # Создаём таблицу активных пользователей
-        active_users_table = Table('Active_users', self.metadata,
-                                   Column('id', Integer, primary_key=True),
-                                   Column('user', ForeignKey('Users.id'), unique=True),
-                                   Column('ip_address', String),
-                                   Column('port', Integer),
-                                   Column('login_time', DateTime)
-                                   )
+        active_users_table = Table(
+            "Active_users",
+            self.metadata,
+            Column("id", Integer, primary_key=True),
+            Column("user", ForeignKey("Users.id"), unique=True),
+            Column("ip_address", String),
+            Column("port", Integer),
+            Column("login_time", DateTime),
+        )
 
         # Создаём таблицу истории входов
-        user_login_history = Table('Login_history', self.metadata,
-                                   Column('id', Integer, primary_key=True),
-                                   Column('name', ForeignKey('Users.id')),
-                                   Column('date_time', DateTime),
-                                   Column('ip', String),
-                                   Column('port', String)
-                                   )
+        user_login_history = Table(
+            "Login_history", self.metadata, Column("id", Integer, primary_key=True), Column("name", ForeignKey("Users.id")), Column("date_time", DateTime), Column("ip", String), Column("port", String)
+        )
 
         # Создаём таблицу контактов пользователей
-        contacts = Table('Contacts', self.metadata,
-                         Column('id', Integer, primary_key=True),
-                         Column('user', ForeignKey('Users.id')),
-                         Column('contact', ForeignKey('Users.id'))
-                         )
+        contacts = Table("Contacts", self.metadata, Column("id", Integer, primary_key=True), Column("user", ForeignKey("Users.id")), Column("contact", ForeignKey("Users.id")))
 
         # Создаём таблицу истории пользователей
-        users_history_table = Table('History', self.metadata,
-                                    Column('id', Integer, primary_key=True),
-                                    Column('user', ForeignKey('Users.id')),
-                                    Column('sent', Integer),
-                                    Column('accepted', Integer)
-                                    )
+        users_history_table = Table("History", self.metadata, Column("id", Integer, primary_key=True), Column("user", ForeignKey("Users.id")), Column("sent", Integer), Column("accepted", Integer))
 
         # Создаём таблицы
         self.metadata.create_all(self.database_engine)
@@ -192,42 +184,27 @@ class ServerStorage:
             return
 
         # Удаляем требуемое
-        print(self.session.query(self.UsersContacts).filter(
-            self.UsersContacts.user == user.id,
-            self.UsersContacts.contact == contact.id
-        ).delete())
+        print(self.session.query(self.UsersContacts).filter(self.UsersContacts.user == user.id, self.UsersContacts.contact == contact.id).delete())
         self.session.commit()
 
     # Функция возвращает список известных пользователей со временем последнего входа.
     def users_list(self):
         # Запрос строк таблицы пользователей.
-        query = self.session.query(
-            self.AllUsers.name,
-            self.AllUsers.last_login
-        )
+        query = self.session.query(self.AllUsers.name, self.AllUsers.last_login)
         # Возвращаем список кортежей
         return query.all()
 
     # Функция возвращает список активных пользователей
     def active_users_list(self):
         # Запрашиваем соединение таблиц и собираем кортежи имя, адрес, порт, время.
-        query = self.session.query(
-            self.AllUsers.name,
-            self.ActiveUsers.ip_address,
-            self.ActiveUsers.port,
-            self.ActiveUsers.login_time
-        ).join(self.AllUsers)
+        query = self.session.query(self.AllUsers.name, self.ActiveUsers.ip_address, self.ActiveUsers.port, self.ActiveUsers.login_time).join(self.AllUsers)
         # Возвращаем список кортежей
         return query.all()
 
     # Функция возвращающая историю входов по пользователю или всем пользователям
     def login_history(self, username=None):
         # Запрашиваем историю входа
-        query = self.session.query(self.AllUsers.name,
-                                   self.LoginHistory.date_time,
-                                   self.LoginHistory.ip,
-                                   self.LoginHistory.port
-                                   ).join(self.AllUsers)
+        query = self.session.query(self.AllUsers.name, self.LoginHistory.date_time, self.LoginHistory.ip, self.LoginHistory.port).join(self.AllUsers)
         # Если было указано имя пользователя, то фильтруем по нему
         if username:
             query = query.filter(self.AllUsers.name == username)
@@ -240,30 +217,23 @@ class ServerStorage:
         user = self.session.query(self.AllUsers).filter_by(name=username).one()
 
         # Запрашиваем его список контактов
-        query = self.session.query(self.UsersContacts, self.AllUsers.name). \
-            filter_by(user=user.id). \
-            join(self.AllUsers, self.UsersContacts.contact == self.AllUsers.id)
+        query = self.session.query(self.UsersContacts, self.AllUsers.name).filter_by(user=user.id).join(self.AllUsers, self.UsersContacts.contact == self.AllUsers.id)
 
         # выбираем только имена пользователей и возвращаем их.
         return [contact[1] for contact in query.all()]
 
     # Функция возвращает количество переданных и полученных сообщений
     def message_history(self):
-        query = self.session.query(
-            self.AllUsers.name,
-            self.AllUsers.last_login,
-            self.UsersHistory.sent,
-            self.UsersHistory.accepted
-        ).join(self.AllUsers)
+        query = self.session.query(self.AllUsers.name, self.AllUsers.last_login, self.UsersHistory.sent, self.UsersHistory.accepted).join(self.AllUsers)
         # Возвращаем список кортежей
         return query.all()
 
 
 # Отладка
-if __name__ == '__main__':
+if __name__ == "__main__":
     test_db = ServerStorage()
-    test_db.user_login('1111', '192.168.1.113', 8080)
-    test_db.user_login('McG2', '192.168.1.113', 8081)
+    test_db.user_login("1111", "192.168.1.113", 8080)
+    test_db.user_login("McG2", "192.168.1.113", 8081)
     print(test_db.users_list())
-    test_db.process_message('McG2', '1111')
+    test_db.process_message("McG2", "1111")
     print(test_db.message_history())

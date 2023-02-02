@@ -1,9 +1,16 @@
 import json
 import unittest
 
-from common.constants import RESPONSE, ERROR, USER, ACCOUNT_NAME, TIME, ACTION, PRESENCE, ENCODING
-
-from common.utils import get_message, send_message
+from common.constants import ACCOUNT_NAME
+from common.constants import ACTION
+from common.constants import ENCODING
+from common.constants import ERROR
+from common.constants import PRESENCE
+from common.constants import RESPONSE
+from common.constants import TIME
+from common.constants import USER
+from common.utils import get_message
+from common.utils import send_message
 
 
 class TestSocket:
@@ -23,16 +30,9 @@ class TestSocket:
 
 
 class TestUtils(unittest.TestCase):
-    test_dict_send = {
-        ACTION: PRESENCE,
-        TIME: 2,
-        USER: {
-            ACCOUNT_NAME: 'TestUser'
-        }
-    }
+    test_dict_send = {ACTION: PRESENCE, TIME: 2, USER: {ACCOUNT_NAME: "TestUser"}}
     test_recv_dict_ok = {RESPONSE: 200}
-    test_recv_dict_err = {RESPONSE: 400,
-                          ERROR: 'BAD REQUEST'}
+    test_recv_dict_err = {RESPONSE: 400, ERROR: "BAD REQUEST"}
 
     def test_dict_msg(self):
         test_sock = TestSocket(self.test_dict_send)
@@ -49,5 +49,5 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(get_message(test_sock_err), self.test_recv_dict_err)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
